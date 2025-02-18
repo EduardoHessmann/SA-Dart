@@ -6,7 +6,7 @@ class Menu {
 
   void mostrarOpcoes() {
     while (opcao != 5) {
-      print("\n================ MENU ============");
+      print("\n================ MENU ================");
       print("1- Adicionar Tarefa");
       print("2- Listar Tarefas");
       print("3- Concluir Tarefa");
@@ -21,8 +21,6 @@ class Menu {
       switch (opcao) {
         case 1:
           gerenciadorTarefa.adicionarTarefa();
-
-          print("Tarefa adicionada com seucesso!");
 
           break;
 
