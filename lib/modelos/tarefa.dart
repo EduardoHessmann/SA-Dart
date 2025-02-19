@@ -1,7 +1,7 @@
 import 'dart:io';
 
 class Tarefa {
-  static int contadorIdTarefa = 1; // variável estática para guardar o numero de tarefas criadas, e atribuir um ID auto incrementável à tarefa;
+  static int contadorIdTarefa = 0; // variável estática para guardar o numero de tarefas criadas, e atribuir um ID auto incrementável à tarefa;
 
   late int _idTarefa = 0; // Variável id da tarefa;
   late String _descTarefa = " "; // Variável de descrição da tarefa;
@@ -10,7 +10,7 @@ class Tarefa {
   static List<Tarefa> tarefas = []; // Lista para guardar as tarefas;
 
   Tarefa(this._descTarefa, this._statusTarefa){  //Construtor da tarefa
-      _idTarefa = contadorIdTarefa++; // O id está sendo incrementado automaticamente pelo contador de IDs;
+      _idTarefa = contadorIdTarefa; // O id está sendo incrementado automaticamente pelo contador de IDs;
   }
 
   Tarefa.vazio(); // Construtor vazio para a tarefa;
@@ -28,12 +28,13 @@ class Tarefa {
 
   //Método de adicionar tarefa;
   void adicionarTarefa() {
+
     print("Informe a descrição da tarefa:");
     String? desc = stdin.readLineSync();
 
     contadorIdTarefa++;
 
-    Tarefa tarefa = Tarefa(desc!, "EM ANDAMENTO");
+    Tarefa tarefa = Tarefa(desc!, "PENDENTE");
 
     tarefas.add(tarefa);
 
@@ -42,12 +43,12 @@ class Tarefa {
 
   //Método para listar as tarefas;
   void listarTarefas() {
-    print("\n============== Listagem ==============");
+    print("\n============== Listagem ==============\n");
     for (var tarefa in tarefas) {
-      print("\n________________________________________");
       print("ID da tarefa: ${tarefa.idTarefa}");
       print("Descrição da tarefa: ${tarefa.descTarefa}");
       print("Statuas da tarefa: ${tarefa.statusTarefa}");
+      print("________________________________________\n");
     }
   }
 
